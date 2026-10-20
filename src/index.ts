@@ -59,7 +59,7 @@ async function main() {
     return;
   }
 
-  const live = cmd === "trade" && process.env.DRY_RUN === "false";
+  const live = (cmd === "trade" || cmd === "close") && process.env.DRY_RUN === "false";
   const ctx = createExchange({ withSigner: live });
   try {
     const markets = await perpMarkets(ctx.exchange);
@@ -67,6 +67,28 @@ async function main() {
 
     if (cmd === "markets") {
       console.log(bases.join(" "));
+      return;
+    }
+    if (cmd === "close") {
+      // Close the whole position on one market with an IOC priced through the
+      // touch, and keep the transaction hash (closePosition() does not return it).
+      const sym = (text || "BTC").toUpperCase();
+      const market = await requireMarket(ctx.exchange, sym.endsWith("-PERP") ? sym : `${sym}-PERP`);
+      const account = ctx.exchange.walletAddress as `0x${string}`;
+      const pos = await positionIn(ctx.exchange, market);
+      if (!pos) { console.log(`no open position on ${market.symbol}`); return; }
+      const preview = await ctx.exchange.client.previewPerpClosePnl({ pool: market.info.poolAddress, marginBank: market.info.marginBank, account });
+      if (!preview.priceable || preview.closedQuantity <= 0n) { console.log("nothing closeable right now"); return; }
+      const book = await ctx.exchange.fetchOrderBook(market.symbol, 5);
+      const closeSide: "long" | "short" = pos.side === "long" ? "short" : "long";
+      const touch = closeSide === "long" ? book.asks[0]?.[0] : book.bids[0]?.[0];
+      if (touch === undefined) { console.log("no resting liquidity to close against"); return; }
+      if (process.env.DRY_RUN !== "false") { console.log(`[dry-run] would close ${pos.side} ${pos.contracts} on ${market.symbol}`); return; }
+      const intent = { side: closeSide, symbol: market.symbol } as unknown as TradeIntent;
+      const res = await openIoc(ctx, market, intent, touch, preview.closedQuantity);
+      const m = await liveMark(ctx.exchange, market);
+      console.log(`closed: filled ${formatUnits(res.filled, market.info.baseDecimals)} ${market.info.baseSymbol} | tx ${txUrl(res.hash)}`);
+      appendJournal({ kind: "close", at: new Date().toISOString(), intent, reason: "manual", tx: res.hash, exitMark: m, pnlUsdso: pos.unrealizedPnl });
       return;
     }
     if (!text) throw new Error('give a trade idea, e.g. plan "long eth 40 usdso 3x tp 2% sl 1%"');
