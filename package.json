@@ -4,14 +4,19 @@
   "private": true,
   "type": "module",
   "description": "Plain-English perps trades on dreamDEX (Somnia Tokyo testnet), risk-checked before they are sent and journaled after.",
-  "workspaces": ["vendor/*"],
-  "engines": { "node": ">=20" },
+  "workspaces": [
+    "vendor/*"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "plan": "tsx src/index.ts plan",
     "trade": "tsx src/index.ts trade",
     "journal": "tsx src/index.ts journal",
     "markets": "tsx src/index.ts markets",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "close": "tsx src/index.ts close"
   },
   "dependencies": {
     "@dreamdex-bot-kit/perp-core": "*",
