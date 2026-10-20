@@ -50,6 +50,7 @@ npm run markets            # the 21 live perp markets
 npm run plan  -- "long eth 40 usdso 3x tp 2% sl 1%"
 npm run trade -- "long eth 40 usdso 3x tp 2% sl 1%"            # dry run
 DRY_RUN=false npm run trade -- "long eth 40 usdso 3x tp 2% sl 1%"
+DRY_RUN=false npm run close -- btc                                # close the whole BTC position
 npm run journal
 ```
 
@@ -71,7 +72,15 @@ The liquidation distance is an estimate (initial margin fraction minus an assume
 
 Orders placed by the copilot on Somnia Tokyo testnet, with explorer links:
 
-_To be filled from `journal/trades.jsonl` once the bot wallet is funded._
+First live round trip, 2026-10-20, BTC-PERP, placed by the bot key `0x1321…656D` trading for the linked app wallet `0x5b8c…a973` (Perps Arena paper USDso):
+
+| Step | What | Transaction |
+| --- | --- | --- |
+| Plan | `long btc 20 usdso 2x tp 2% sl 1%`: verdict CAUTION (book 21.9 bps above the mark, 132.7% APR funding paid by longs) | not on-chain |
+| Open | IOC buy, filled 0.00024 BTC near mark 82,417.65 | [0xef08…daf5](https://explorer.testnet.somnia.network/tokyo/tx/0xef089b3b7564690abfe14a00e46ccaccb422b10cece14d0550e02b6e93bddaf5) |
+| Close | `npm run close -- btc`, IOC sell, filled 0.00024 BTC | [0x346a…57ef](https://explorer.testnet.somnia.network/tokyo/tx/0x346adf26c1d58a990e868c9d04b03d5db8bd50555cf138d031dce8a83dee57ef) |
+
+Both receipts have status 1 (blocks 28,720,195 and 28,722,202). Every plan, open and close is in `journal/trades.jsonl`.
 
 ## X posts
 
