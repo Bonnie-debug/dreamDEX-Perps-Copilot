@@ -1,0 +1,27 @@
+{
+  "name": "dreamdex-perps-copilot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Plain-English perps trades on dreamDEX (Somnia Tokyo testnet), risk-checked before they are sent and journaled after.",
+  "workspaces": ["vendor/*"],
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "plan": "tsx src/index.ts plan",
+    "trade": "tsx src/index.ts trade",
+    "journal": "tsx src/index.ts journal",
+    "markets": "tsx src/index.ts markets",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@dreamdex-bot-kit/perp-core": "*",
+    "dotenv": "^16.4.5",
+    "viem": "^2.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  },
+  "license": "MIT"
+}
