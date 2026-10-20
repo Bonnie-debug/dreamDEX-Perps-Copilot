@@ -84,7 +84,7 @@ Both receipts have status 1 (blocks 28,720,195 and 28,722,202). Every plan, open
 
 ## X posts
 
-_2 or 3 posts tagging @DreamDEXSomnia, added before submission._
+- [Launch post: plain-English perps copilot, first testnet round trip](https://x.com/kilonode_ai/status/2112626975953317919)
 
 ## Feedback
 
