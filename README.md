@@ -82,6 +82,16 @@ First live round trip, 2026-10-20, BTC-PERP, placed by the bot key `0x1321…656
 
 Both receipts have status 1 (blocks 28,720,195 and 28,722,202). Every plan, open and close is in `journal/trades.jsonl`.
 
+Second live round trip, 2026-10-21, ETH-PERP, same bot and wallet. This one passed every check, so it shows the `GO` path end to end, with the copilot's own exit watcher closing the position:
+
+| Step | What | Transaction |
+| --- | --- | --- |
+| Plan | `long eth 20 usdso 2x tp 2% sl 1%`: verdict GO (0.8 bps spread, 10.95% APR funding, liquidation ~47.5% away) | not on-chain |
+| Open | IOC buy, filled 0.0079 ETH near mark 2,509.27 | [0xa449…1bf9](https://explorer.testnet.somnia.network/tokyo/tx/0xa4493108a4d2751cd638036fd260134be06b2bdf156b14c63c43ef5ffac21bf9) |
+| Close | exit watcher, time-out close, IOC sell, filled 0.0079 ETH | [0x04cf…62af](https://explorer.testnet.somnia.network/tokyo/tx/0x04cf875a4a023a5103633ffe86e84f2b8ccb9f219ab22dffa36781a0e9a962af) |
+
+Both receipts have status 1 (blocks 29,458,084 and 29,458,745).
+
 ## X posts
 
 - [Launch post: plain-English perps copilot, first testnet round trip](https://x.com/kilonode_ai/status/2112626975953317919)
