@@ -86,6 +86,7 @@ Both receipts have status 1 (blocks 28,720,195 and 28,722,202). Every plan, open
 
 - [Launch post: plain-English perps copilot, first testnet round trip](https://x.com/kilonode_ai/status/2112626975953317919)
 - [GO / CAUTION / BLOCK: first BTC test got CAUTION on ~133% annualized funding](https://x.com/kilonode_ai/status/2112867027744661675)
+- [Testnet find: bot kit order helper drops the tx hash, so the copilot keeps it for explorer links](https://x.com/kilonode_ai/status/2112932423562321993)
 
 ## Feedback
 
