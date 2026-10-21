@@ -92,6 +92,14 @@ Second live round trip, 2026-10-21, ETH-PERP, same bot and wallet. This one pass
 
 Both receipts have status 1 (blocks 29,458,084 and 29,458,745).
 
+Third live round trip, 2026-10-21, SOL-PERP short, same bot and wallet. Verdict CAUTION (shorts paying 88.4% APR funding), and the close hash is now recorded by the exit watcher itself:
+
+| Step | What | Transaction |
+| --- | --- | --- |
+| Plan | `short sol 20 usdso 2x tp 2% sl 1%`: verdict CAUTION (2.8 bps spread, shorts pay 88.4% APR funding) | not on-chain |
+| Open | IOC sell, filled 0.18 SOL near mark 108.44 | [0x5a9b…ce87](https://explorer.testnet.somnia.network/tokyo/tx/0x5a9becbea4ce3b3447530acc4e889966d9ea57d2c272da3ca1ce8beea41fce87) |
+| Close | exit watcher, time-out close, IOC buy, filled 0.18 SOL | [0x8633…026c](https://explorer.testnet.somnia.network/tokyo/tx/0x86333a593ae835b62b16b0c6631f7b32e68e04f255c0c23326bb4b1f90b1026c) |
+
 ## X posts
 
 - [Launch post: plain-English perps copilot, first testnet round trip](https://x.com/kilonode_ai/status/2112626975953317919)
