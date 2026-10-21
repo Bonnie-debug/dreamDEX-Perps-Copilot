@@ -37,6 +37,23 @@ const SLIPPAGE_BPS = Number(process.env.COPILOT_SLIPPAGE_BPS ?? 30);
 const TICK_MS = Number(process.env.COPILOT_TICK_MS ?? 10_000);
 const WATCH_MAX_MIN = Number(process.env.COPILOT_WATCH_MAX_MIN ?? 120);
 
+// Close the whole position with an IOC priced through the touch and keep the
+// transaction hash (the kit's closePosition() does not return it).
+async function closeWithHash(ctx: PerpContext, market: PerpMarket, account: `0x${string}`) {
+  const preview = await ctx.exchange.client.previewPerpClosePnl({ pool: market.info.poolAddress, marginBank: market.info.marginBank, account });
+  if (!preview.priceable || preview.closedQuantity <= 0n) return undefined;
+  const pos = await positionIn(ctx.exchange, market);
+  if (!pos) return undefined;
+  const book = await ctx.exchange.fetchOrderBook(market.symbol, 5);
+  const closeSide: "long" | "short" = pos.side === "long" ? "short" : "long";
+  const touch = closeSide === "long" ? book.asks[0]?.[0] : book.bids[0]?.[0];
+  if (touch === undefined) return undefined;
+  const intent = { side: closeSide, symbol: market.symbol } as unknown as TradeIntent;
+  const res = await openIoc(ctx, market, intent, touch, preview.closedQuantity);
+  console.log(`closed: filled ${formatUnits(res.filled, market.info.baseDecimals)} ${market.info.baseSymbol} | tx ${txUrl(res.hash)}`);
+  return res;
+}
+
 async function openIoc(ctx: PerpContext, market: PerpMarket, intent: TradeIntent, touch: number, quantity: bigint) {
   const slip = BigInt(SLIPPAGE_BPS);
   const raw = BigInt(Math.round(touch * 1e18));
@@ -162,14 +179,16 @@ async function main() {
       console.log(`${pos.side} ${pos.contracts} | mark ${m} | uPnL ${pos.unrealizedPnl?.toFixed(4) ?? "?"}`);
       if (hitTp || hitSl) {
         const label = hitTp ? "take-profit" : "stop-loss";
-        await closePosition(ctx, fresh, account, { label });
-        appendJournal({ kind: "close", at: new Date().toISOString(), intent, reason: label, exitMark: m, pnlUsdso: pos.unrealizedPnl });
+        const c = (await closeWithHash(ctx, fresh, account!)) ?? (await closePosition(ctx, fresh, account, { label }), undefined);
+        appendJournal({ kind: "close", at: new Date().toISOString(), intent, reason: label, tx: c?.hash, exitMark: m, pnlUsdso: pos.unrealizedPnl });
         break;
       }
     }
     if (Date.now() >= until) {
-      await closePosition(ctx, market, account, { label: "time-out" });
-      appendJournal({ kind: "close", at: new Date().toISOString(), intent, reason: "time-out" });
+      const fresh = await requireMarket(ctx.exchange, market.symbol, { reload: true });
+      const m = await liveMark(ctx.exchange, fresh);
+      const c = (await closeWithHash(ctx, fresh, account!)) ?? (await closePosition(ctx, fresh, account, { label: "time-out" }), undefined);
+      appendJournal({ kind: "close", at: new Date().toISOString(), intent, reason: "time-out", tx: c?.hash, exitMark: m });
     }
   } finally {
     await shutdown(ctx);
