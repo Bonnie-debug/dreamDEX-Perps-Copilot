@@ -1,0 +1,7 @@
+  position after start: flat
+1 open long: buy 0.00013 BTC IOC -> filled 0.00013 | https://explorer.testnet.somnia.network/tokyo/tx/0x5294024903621466716669f663148ddc3f73a5a13f787b5489293249b32b23bc
+  position after open: long 0.00013
+2 'close' sized 2x the position: sell 0.00026 BTC IOC -> filled 0.00026 | https://explorer.testnet.somnia.network/tokyo/tx/0x75d59bce56f2c2a077ddb1d5efc49930157fcfd98e0509c2e8238d94a69ffcac
+  position after over-sized close: short 0.00013
+cleanup: buy 0.00013 BTC IOC -> filled 0.00013 | https://explorer.testnet.somnia.network/tokyo/tx/0x7a3c5939a18df06dd088bce1bcff167abe7e946b142e9aab6c7dfb44d81d320a
+  position after cleanup: flat
