@@ -1,0 +1,25 @@
+block 34647573
+market | docs OI cap | chain maxOpenInterest | chain maxPositionSize | per-account cap as % of chain OI cap | docs 'a tenth'?
+ZRO | 250599.5 | 1002397.9999999999 | 25059.899999999998 | 2.50% | NO | docs OI cap differs from chain
+LIT | 138896.6 | 555586.4 | 13889.6 | 2.50% | NO | docs OI cap differs from chain
+VVV | 21786.14 | 87144.56 | 2178.61 | 2.50% | NO | docs OI cap differs from chain
+1000PEPE | 130285600 | 521142400 | 13028500 | 2.50% | NO | docs OI cap differs from chain
+PUMP | 87993700 | 351974800 | 8799300 | 2.50% | NO | docs OI cap differs from chain
+ZEC | 420 | 1680 | 420 | 25.00% | NO | docs OI cap differs from chain
+TAO | 2185.491 | 2185.491 | 218.549 | 10.00% | yes
+WLD | 1264000 | 5056000 | 126400 | 2.50% | NO | docs OI cap differs from chain
+NEAR | 250410 | 1001640.0000000001 | 50000 | 4.99% | NO | docs OI cap differs from chain
+XLM | 2677780 | 10711120 | 535556 | 5.00% | NO | docs OI cap differs from chain
+AVAX | 66672.2 | 266688.8 | 13334.4 | 5.00% | NO | docs OI cap differs from chain
+LINK | 42643.6 | 170574.4 | 8528.6 | 5.00% | NO | docs OI cap differs from chain
+SUI | 635009 | 2540036 | 127000 | 5.00% | NO | docs OI cap differs from chain
+ADA | 2254678 | 9018712 | 450934 | 5.00% | NO | docs OI cap differs from chain
+BNB | 693.975 | 2775.9 | 140 | 5.04% | NO | docs OI cap differs from chain
+DOGE | 5613590 | 22454360 | 1122700 | 5.00% | NO | docs OI cap differs from chain
+XRP | 344632 | 1378528 | 68926.4 | 5.00% | NO | docs OI cap differs from chain
+HYPE | 23812.72 | 47625.44 | 2381.27 | 5.00% | NO | docs OI cap differs from chain
+SOL | 47654.44 | 95308.88 | 4765.44 | 5.00% | NO | docs OI cap differs from chain
+ETH | 3995.6125 | 7991.224999999999 | 399.5612 | 5.00% | NO | docs OI cap differs from chain
+BTC | 246.81545 | 493.6309 | 100 | 20.26% | NO | docs OI cap differs from chain
+
+20/21 markets: per-account cap is not a tenth of the OI cap. 2026-10-27T16:02:36.364Z
