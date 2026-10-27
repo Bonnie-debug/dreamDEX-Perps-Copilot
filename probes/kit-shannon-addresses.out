@@ -1,0 +1,19 @@
+kit passes perpPoolFactory=0x516d2cb6de41bE98444e887793946E65989Ba07b (Shannon) | Hideki has 0xE631fAEE547baeE07353E290f0562ea67d856560 | bytecode at the Shannon address on chain 50383: NONE
+kit passes marginBank=0xdd4A14A2763FDa39b9759D2D4150DB0e0f085C4E (Shannon) | Hideki has 0x478769E1177C0773c43A593DCCc4Ad15F15F1394 | bytecode at the Shannon address on chain 50383: NONE
+kit passes collateral=0x70a86D8842FB63C4Ad2b7cdddF530eBf1BB25d8E (Shannon) | Hideki has 0x9E9492cC533E8696A3b6afC7df730800DF75148f | bytecode at the Shannon address on chain 50383: NONE
+kit passes priceFeedScheduler=0x7ccAE31E45693475be1e4BAa2360D6997eB2D32B (Shannon) | Hideki has 0x1998C88D54a240b8C671493f27f58eC416b81D7F | bytecode at the Shannon address on chain 50383: NONE
+kit passes marketCreator=0xD584e651008538b5C6B1C777cD4fbD54cC19a291 (Shannon) | Hideki has 0xAd890D6Ac3c659E1Ed0fA72Cf557DB4cA26bdAff | bytecode at the Shannon address on chain 50383: NONE
+
+[bot kit createExchange (NETWORK=hideki)] perps=21 active=21 with chain perpStatus (restricted/registered gates)=0
+  BTC: active=true perpStatus=null
+  perpDiscoveryError: @somnia-chain/markets-sdk: rpc readContract getPerpPools failed: The contract function "getPerpPools" returned no data ("0x").
+  perpDiscoverySkipped: null
+  registryReadError: null
+
+[SDK per dreamDEX docs (SOMNIA_HIDEKI_TESTNET_ADDRESSES)] perps=21 active=21 with chain perpStatus (restricted/registered gates)=21
+  BTC: active=true perpStatus={"restricted":false,"registered":true,"tradeable":true}
+  perpDiscoveryError: null
+  perpDiscoverySkipped: null
+  registryReadError: null
+
+2026-10-27T15:59:11.455Z
