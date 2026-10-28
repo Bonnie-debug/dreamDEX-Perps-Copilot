@@ -110,6 +110,22 @@ Third live round trip, 2026-10-21, SOL-PERP short, same bot and wallet. Verdict 
 
 Reproducible reports for the Feedback track are in [`feedback/`](feedback), one issue per file.
 
+1. [Bounty says "Somnia Tokyo testnet"; docs and bot kit only say "Hideki"](feedback/01-tokyo-vs-hideki-naming.md)
+2. [Bot kit installs markets-sdk 0.30/0.31; docs are written for 0.32.1](feedback/02-botkit-sdk-version-drift.md)
+3. [sizeOrder reports a collateral limit with no next step](feedback/03-collateral-limit-unexplained.md)
+4. [Bot kit says stops lock SOMI on testnet, where the coin is STT](feedback/04-stop-deposit-called-somi-on-testnet.md)
+5. [placePerp() returns no transaction hash](feedback/05-placeperp-drops-tx-hash.md)
+6. [Voucher eligibility says true, but claim() reverts](feedback/06-voucher-eligible-but-claim-reverts.md)
+7. [Funding docs name the wrong paying side on 12 of 21 markets](feedback/07-funding-docs-wrong-side.md)
+8. [SDK hidekiTestnet says 10 ms blocks; the chain makes ~100 ms blocks](feedback/08-hideki-blocktime-100ms-not-10ms.md)
+9. [SDK says Hideki has no explorer; the Tokyo explorer works](feedback/09-hideki-chain-has-no-explorer.md)
+10. [precision.amount hides the lot step on PUMP/1000PEPE/DOGE](feedback/10-precision-amount-hides-lot-step.md)
+11. [Bot kit passes the Shannon address set on Hideki](feedback/11-botkit-passes-shannon-addresses-on-hideki.md)
+12. [Docs OI caps stale; per-account cap is a tenth on only 1 market](feedback/12-oi-cap-table-stale-and-account-cap-not-a-tenth.md)
+13. [No reduce-only for perp orders, so an oversized close flips the position](feedback/13-no-reduce-only-for-perp-orders-close-can-flip.md)
+14. [Paper USDso can open positions in the six "No" markets; the chain allows all 21](feedback/14-paper-usdso-opens-positions-in-no-markets.md)
+15. [Docs say a perp-pool tx costs 0.0003–0.003 STT; a single order costs 0.009–0.026 STT](feedback/15-perp-gas-cost-docs-range-too-low.md)
+
 ## License
 
 MIT. `vendor/perp-core` is © DreamDEX S.A., MIT, see its LICENSE.
