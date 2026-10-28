@@ -1,0 +1,22 @@
+example: block 35217874 BTC 0x854bcaac6d027b20c40cb770aba8b8c8d0fbe6b682151da356e45121c767bf68 gasUsed 5861682 @ 0.6 gwei = 0.003517 STT
+head 35217874; 24 blocks sampled 1500 apart; 37 pool txs (35 successful)
+successful pool tx fee STT: min 0.000228 p10 0.000729 median 0.001410 p90 0.020245 max 0.021754
+gasUsed: min 124056 median 923398 max 3625592; gas prices seen (gwei): 0.6, 6, 1.8
+inside the documented 0.0003-0.003 STT range: 20/35
+  selector 0x80054449: 6 txs, fee 0.003517..0.008808 STT
+  selector 0x4e978373: 9 txs, fee 0.014212..0.021754 STT
+  selector 0x0dce6933: 11 txs, fee 0.000228..0.001496 STT
+  selector 0xe37b444b: 4 txs, fee 0.000835..0.001109 STT
+  selector 0x24ea3d1f: 7 txs, fee 0.000792..0.001895 STT
+
+our own live perp txs (Wallet 1 via linked bot):
+  0xef089b3b7564690abfe14a00e46ccaccb422b10cece14d0550e02b6e93bddaf5 -> BTC gasUsed 4312530 @ 6 gwei = 0.025875 STT
+  0x346adf26c1d58a990e868c9d04b03d5db8bd50555cf138d031dce8a83dee57ef -> BTC gasUsed 2733584 @ 6 gwei = 0.016402 STT
+  0xa4493108a4d2751cd638036fd260134be06b2bdf156b14c63c43ef5ffac21bf9 -> ETH gasUsed 2513955 @ 6 gwei = 0.015084 STT
+  0x04cf875a4a023a5103633ffe86e84f2b8ccb9f219ab22dffa36781a0e9a962af -> ETH gasUsed 1577738 @ 6 gwei = 0.009466 STT
+  0x5a9becbea4ce3b3447530acc4e889966d9ea57d2c272da3ca1ce8beea41fce87 -> SOL gasUsed 2571923 @ 6 gwei = 0.015432 STT
+  0x86333a593ae835b62b16b0c6631f7b32e68e04f255c0c23326bb4b1f90b1026c -> SOL gasUsed 1716170 @ 6 gwei = 0.010297 STT
+  0x5294024903621466716669f663148ddc3f73a5a13f787b5489293249b32b23bc -> BTC gasUsed 1699945 @ 6 gwei = 0.010200 STT
+  0x75d59bce56f2c2a077ddb1d5efc49930157fcfd98e0509c2e8238d94a69ffcac -> BTC gasUsed 1927137 @ 6 gwei = 0.011563 STT
+  0x7a3c5939a18df06dd088bce1bcff167abe7e946b142e9aab6c7dfb44d81d320a -> BTC gasUsed 1607183 @ 6 gwei = 0.009643 STT
+2026-10-28T08:09:21.162Z
