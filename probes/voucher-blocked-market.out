@@ -1,0 +1,35 @@
+1) MarginBank.isVoucherMarketAllowed(pool) vs docs 'Paper USDso' column
+  ZRO: chain true | docs No  <-- MISMATCH
+  LIT: chain true | docs No  <-- MISMATCH
+  VVV: chain true | docs No  <-- MISMATCH
+  1000PEPE: chain true | docs No  <-- MISMATCH
+  PUMP: chain true | docs No  <-- MISMATCH
+  ZEC: chain true | docs No  <-- MISMATCH
+  TAO: chain true | docs Yes
+  WLD: chain true | docs Yes
+  NEAR: chain true | docs Yes
+  XLM: chain true | docs Yes
+  AVAX: chain true | docs Yes
+  LINK: chain true | docs Yes
+  SUI: chain true | docs Yes
+  ADA: chain true | docs Yes
+  BNB: chain true | docs Yes
+  DOGE: chain true | docs Yes
+  XRP: chain true | docs Yes
+  HYPE: chain true | docs Yes
+  SOL: chain true | docs Yes
+  ETH: chain true | docs Yes
+  BTC: chain true | docs Yes
+
+2) voucher on 0x5b8c61a928dEDf1298F11F75D76690031E66a973: claimed=true floor=1999.946716 USDso expiresAt=1794234741 (non-zero floor = paper USDso still in the account)
+
+3) open the minimum ZEC-PERP long from the voucher account (docs: should be rejected)
+  position after start: flat
+  open long: buy 0.009 ZEC IOC @<=1318.8899999999999 -> filled 0.009 | https://explorer.testnet.somnia.network/tokyo/tx/0xdf15d6cf294c70051ac3f50695bdc0f7b6815520f362c82b9a8b665a024b7d86
+  position after open: long 0.009
+
+4) cleanup
+  close: sell 0.009 ZEC IOC @<=1305.176 -> filled 0.009 | https://explorer.testnet.somnia.network/tokyo/tx/0x7b7d6ed0bc99f15170b4aa6e0da290c733d4a0ace3965e7e632eab71bf087f3e
+  position after cleanup: flat
+  voucher floor after: 1999.946716 USDso
+2026-10-28T08:11:19.724Z
